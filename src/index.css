@@ -17,3 +17,7 @@
 body {
   font-family: var(--ff-primary);
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
