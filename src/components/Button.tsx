@@ -1,5 +1,5 @@
 function Button() {
-  return <button>Confirm</button>;
+  return <button type="submit">Confirm</button>;
 }
 
 export default Button;
