@@ -5,12 +5,17 @@ import { cardDetailsFormSchema } from "../schemas/cardDetailsFormSchema";
 import { z } from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
+import { initalValue } from "../constants/constants";
 
 type cardDetailsType = z.infer<typeof cardDetailsFormSchema>;
-function Form() {
-  const [month, setMonth] = useState("");
-  const [cardNumber, setCardNumber] = useState("");
+function Form({
+  formData,
+  handleFormData,
+}: {
+  formData: cardDetailsType;
+  handleFormData: Dispatch<SetStateAction<cardDetailsType>>;
+}) {
   const {
     register,
     handleSubmit,
@@ -22,24 +27,47 @@ function Form() {
 
   const onSubmit: SubmitHandler<cardDetailsType> = (data) => {
     console.log(data);
+    handleFormData(initalValue);
     reset();
   };
 
-  const handleMonthValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value === "") setMonth("");
-    if (isNaN(Number(e.target.value))) return;
-    setMonth(e.target.value);
+  const onMonthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    if (value === "") handleFormData({ ...formData, [name]: "" });
+    if (isNaN(Number(value))) return;
+    if (Number(value) > 12) {
+      handleFormData({ ...formData, [name]: "12" });
+      return;
+    }
+    handleFormData({ ...formData, [name]: value });
   };
 
-  const handleCardNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const sanitizedValue = e.target.value;
-    setCardNumber(
-      sanitizedValue
-        .replace(/[^\d]/g, "")
-        .slice(0, 16)
-        .replace(/(\d{4})/g, "$1 ")
-        .trim()
-    );
+  const onYearChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (value === "") handleFormData({ ...formData, [name]: "" });
+    if (isNaN(Number(value))) return;
+    handleFormData({ ...formData, [name]: value });
+  };
+
+  const onCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    const sanitizedValue = value;
+    const newValue = sanitizedValue
+      .replace(/[^\d]/g, "")
+      .slice(0, 16)
+      .replace(/(\d{4})/g, "$1 ")
+      .trim();
+
+    handleFormData({ ...formData, [name]: newValue });
+  };
+
+  const oncvcChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (value === "") handleFormData({ ...formData, [name]: "" });
+    if (isNaN(Number(value))) return;
+
+    handleFormData({ ...formData, [name]: value });
   };
 
   return (
@@ -57,8 +85,8 @@ function Form() {
           {...register("cardnumber")}
           id="cardnumber"
           type="text"
-          value={cardNumber}
-          onChange={handleCardNumber}
+          value={formData.cardnumber}
+          onChange={onCardNumberChange}
           placeholder="e.g. 1234 5678 9123 0000"
         />
         {errors.cardnumber && <span>{errors.cardnumber.message}</span>}
@@ -74,19 +102,29 @@ function Form() {
               inputMode="numeric"
               maxLength={2}
               placeholder="MM"
-              value={month}
+              value={formData.expmonth}
               max={12}
-              onChange={handleMonthValueChange}
+              onChange={onMonthChange}
             />
-            <input {...register("expyear")} type="number" placeholder="YY" />
+            <input
+              {...register("expyear")}
+              type="text"
+              placeholder="YY"
+              maxLength={2}
+              value={formData.expyear}
+              onChange={onYearChange}
+            />
           </div>
         </label>
         <Field id="cvc" label="CVC">
           <input
             {...register("cvc")}
             id="cvc"
-            type="number"
+            type="text"
+            maxLength={3}
             placeholder="eg. 123"
+            onChange={oncvcChange}
+            value={formData.cvc}
           />
         </Field>
       </div>
