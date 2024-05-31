@@ -76,24 +76,28 @@ function Form({
       onSubmit={handleSubmit(onSubmit)}
     >
       <Field id="name" label="CARDHOLDER NAME">
-        <input
-          className="px-4 border-image py-2 text-lg rounded-lg border-[1px] placeholder:text-customNeutral-300 border-customNeutral-300"
-          {...register("name")}
-          id="name"
-          type="text"
-          placeholder="e.g. Jane Appleseed"
-        />
+        <span className="p-[1px] pb-[1.4px] pe-[1.1px] input">
+          <input
+            className="w-full px-4 py-2 text-lg border-none rounded-lg placeholder:text-customNeutral-300 border-customNeutral-300"
+            {...register("name")}
+            id="name"
+            type="text"
+            placeholder="e.g. Jane Appleseed"
+          />
+        </span>
       </Field>
       <Field id="cardnumber" label="CARD NUMBER">
-        <input
-          className="placeholder:text-customNeutral-300 border-[1px] text-lg px-4 py-2 border-customNeutral-300 rounded-lg"
-          {...register("cardnumber")}
-          id="cardnumber"
-          type="text"
-          value={formData.cardnumber}
-          onChange={onCardNumberChange}
-          placeholder="e.g. 1234 5678 9123 0000"
-        />
+        <span className="p-[1px] pe-[1.2px] py-[1.5px] input">
+          <input
+            className="w-full border-none placeholder:text-customNeutral-300 border-[1px] text-lg px-4 py-2 border-customNeutral-300 rounded-lg"
+            {...register("cardnumber")}
+            id="cardnumber"
+            type="text"
+            value={formData.cardnumber}
+            onChange={onCardNumberChange}
+            placeholder="e.g. 1234 5678 9123 0000"
+          />
+        </span>
         {errors.cardnumber && <span>{errors.cardnumber.message}</span>}
       </Field>
       <div className="flex gap-3">
@@ -102,41 +106,47 @@ function Form({
             EXP. DATE (MM/YY)
           </span>
           <div className="flex gap-2">
-            <input
-              className="placeholder:text-customNeutral-300 border-[1px] w-1/2 text-lg px-4 py-2 border-customNeutral-300 rounded-lg"
-              {...register("expmonth")}
-              id="expdate"
-              type="text"
-              inputMode="numeric"
-              maxLength={2}
-              placeholder="MM"
-              value={formData.expmonth}
-              max={12}
-              onChange={onMonthChange}
-            />
-            <input
-              className="w-1/2 border-[1px] text-lg px-4 py-2 placeholder:text-customNeutral-300 border-customNeutral-300 rounded-lg"
-              {...register("expyear")}
-              type="text"
-              placeholder="YY"
-              maxLength={2}
-              value={formData.expyear}
-              onChange={onYearChange}
-            />
+            <span className="w-1/2 px-[1.3px] py-[1.5px] input">
+              <input
+                className="w-full border-none placeholder:text-customNeutral-300 border-[1px]  text-lg px-4 py-2 border-customNeutral-300 rounded-lg"
+                {...register("expmonth")}
+                id="expdate"
+                type="text"
+                inputMode="numeric"
+                maxLength={2}
+                placeholder="MM"
+                value={formData.expmonth}
+                max={12}
+                onChange={onMonthChange}
+              />
+            </span>
+            <span className="w-1/2 px-[1.4px] py-[1.5px] input">
+              <input
+                className="w-full border-none border-[1px] text-lg px-4 py-2 placeholder:text-customNeutral-300 border-customNeutral-300 rounded-lg"
+                {...register("expyear")}
+                type="text"
+                placeholder="YY"
+                maxLength={2}
+                value={formData.expyear}
+                onChange={onYearChange}
+              />
+            </span>
           </div>
         </label>
         <div className="w-1/2">
           <Field id="cvc" label="CVC">
-            <input
-              className="border-[1px] placeholder:text-customNeutral-300 text-lg px-4 py-2 border-customNeutral-300 rounded-lg"
-              {...register("cvc")}
-              id="cvc"
-              type="text"
-              maxLength={3}
-              placeholder="eg. 123"
-              onChange={oncvcChange}
-              value={formData.cvc}
-            />
+            <span className="px-[1.4px] py-[1.5px] input">
+              <input
+                className="w-full px-4 py-2 text-lg border-none rounded-lg placeholder:text-customNeutral-300 border-customNeutral-300"
+                {...register("cvc")}
+                id="cvc"
+                type="text"
+                maxLength={3}
+                placeholder="eg. 123"
+                onChange={oncvcChange}
+                value={formData.cvc}
+              />
+            </span>
           </Field>
         </div>
       </div>

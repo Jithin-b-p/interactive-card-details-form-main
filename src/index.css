@@ -39,12 +39,23 @@ input:focus {
   outline: none;
 }
 
-.border-image:focus {
-  border-radius: 10px; /*1*/
-  border: 1px solid transparent; /*2*/
-  background: var(--custom-gradient-input) border-box; /*3*/
-  -webkit-mask: /*4*/ linear-gradient(#fff 0 0) padding-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor; /*5'*/
-  mask-composite: exclude; /*5*/
+.input {
+  background: hsl(var(--clr-neutral-300));
+  border-radius: 0.6rem;
 }
+.input:has(input:focus) {
+  background: var(--custom-gradient-input);
+}
+/*
+
+.border-image:focus {
+  border-radius: 10px; 
+  border: 1px solid transparent;
+  background: var(--custom-gradient-input) border-box; 
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; 
+  mask-composite: exclude; 
+}
+
+*/
