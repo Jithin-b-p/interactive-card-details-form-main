@@ -71,9 +71,13 @@ function Form({
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="flex flex-col gap-4 md:w-[50%]"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <Field id="name" label="CARDHOLDER NAME">
         <input
+          className="px-4 border-image py-2 text-lg rounded-lg border-[1px] placeholder:text-customNeutral-300 border-customNeutral-300"
           {...register("name")}
           id="name"
           type="text"
@@ -82,6 +86,7 @@ function Form({
       </Field>
       <Field id="cardnumber" label="CARD NUMBER">
         <input
+          className="placeholder:text-customNeutral-300 border-[1px] text-lg px-4 py-2 border-customNeutral-300 rounded-lg"
           {...register("cardnumber")}
           id="cardnumber"
           type="text"
@@ -91,11 +96,14 @@ function Form({
         />
         {errors.cardnumber && <span>{errors.cardnumber.message}</span>}
       </Field>
-      <div>
-        <label>
-          <span>EXP. DATE (MM/YY)</span>
-          <div>
+      <div className="flex gap-3">
+        <label className="flex flex-col w-1/2 gap-2">
+          <span className="text-sm font-bold tracking-wider">
+            EXP. DATE (MM/YY)
+          </span>
+          <div className="flex gap-2">
             <input
+              className="placeholder:text-customNeutral-300 border-[1px] w-1/2 text-lg px-4 py-2 border-customNeutral-300 rounded-lg"
               {...register("expmonth")}
               id="expdate"
               type="text"
@@ -107,6 +115,7 @@ function Form({
               onChange={onMonthChange}
             />
             <input
+              className="w-1/2 border-[1px] text-lg px-4 py-2 placeholder:text-customNeutral-300 border-customNeutral-300 rounded-lg"
               {...register("expyear")}
               type="text"
               placeholder="YY"
@@ -116,17 +125,20 @@ function Form({
             />
           </div>
         </label>
-        <Field id="cvc" label="CVC">
-          <input
-            {...register("cvc")}
-            id="cvc"
-            type="text"
-            maxLength={3}
-            placeholder="eg. 123"
-            onChange={oncvcChange}
-            value={formData.cvc}
-          />
-        </Field>
+        <div className="w-1/2">
+          <Field id="cvc" label="CVC">
+            <input
+              className="border-[1px] placeholder:text-customNeutral-300 text-lg px-4 py-2 border-customNeutral-300 rounded-lg"
+              {...register("cvc")}
+              id="cvc"
+              type="text"
+              maxLength={3}
+              placeholder="eg. 123"
+              onChange={oncvcChange}
+              value={formData.cvc}
+            />
+          </Field>
+        </div>
       </div>
 
       <Button />

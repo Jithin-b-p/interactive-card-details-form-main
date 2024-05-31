@@ -6,8 +6,13 @@ type FieldTypes = {
 
 function Field({ label, id, children }: FieldTypes) {
   return (
-    <div>
-      <label htmlFor={id}>{label}</label>
+    <div className="flex flex-col gap-2">
+      <label
+        className="text-sm font-bold tracking-wider text-customNeutral-100"
+        htmlFor={id}
+      >
+        {label}
+      </label>
       {children}
     </div>
   );
