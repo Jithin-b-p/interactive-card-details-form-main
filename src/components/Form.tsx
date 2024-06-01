@@ -54,9 +54,9 @@ function Form({
     const { name, value } = e.target;
     const sanitizedValue = value;
     const newValue = sanitizedValue
-      .replace(/[^\d]/g, "")
+      .replace(/[^a-zA-Z\d]/g, "")
       .slice(0, 16)
-      .replace(/(\d{4})/g, "$1 ")
+      .replace(/([\da-zA-Z]{4})/g, "$1 ")
       .trim();
 
     handleFormData({ ...formData, [name]: newValue });
@@ -94,6 +94,11 @@ function Form({
             onChange={onNameChange}
           />
         </span>
+        {errors.name && (
+          <span className="text-xs text-customErrorRed">
+            {errors.name.message}
+          </span>
+        )}
       </Field>
       <Field id="cardnumber" label="CARD NUMBER">
         <span className="p-[1px] pe-[1.2px] py-[1.5px] input">
@@ -107,7 +112,11 @@ function Form({
             placeholder="e.g. 1234 5678 9123 0000"
           />
         </span>
-        {errors.cardnumber && <span>{errors.cardnumber.message}</span>}
+        {errors.cardnumber && (
+          <span className="text-xs text-customErrorRed">
+            {errors.cardnumber.message}
+          </span>
+        )}
       </Field>
       <div className="flex gap-3">
         <label className="flex flex-col w-1/2 gap-2">
@@ -141,6 +150,13 @@ function Form({
               />
             </span>
           </div>
+          {(errors.expmonth || errors.expyear) && (
+            <span className="text-xs text-customErrorRed">
+              {errors.expmonth
+                ? errors.expmonth.message
+                : errors.expyear?.message}
+            </span>
+          )}
         </label>
         <div className="w-1/2">
           <Field id="cvc" label="CVC">
@@ -156,6 +172,11 @@ function Form({
                 value={formData.cvc}
               />
             </span>
+            {errors.cvc && (
+              <span className="text-xs text-customErrorRed">
+                {errors.cvc.message}
+              </span>
+            )}
           </Field>
         </div>
       </div>

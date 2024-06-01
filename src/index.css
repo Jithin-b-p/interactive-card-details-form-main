@@ -20,6 +20,8 @@
 
   --clr-blue: 249 99% 64%;
   --clr-purple: 278 94% 30%;
+  --clr-red: 0 100% 66%;
+
   --custom-gradient-input: linear-gradient(
     to right,
     hsl(var(--clr-blue)),
@@ -46,16 +48,3 @@ input:focus {
 .input:has(input:focus) {
   background: var(--custom-gradient-input);
 }
-/*
-
-.border-image:focus {
-  border-radius: 10px; 
-  border: 1px solid transparent;
-  background: var(--custom-gradient-input) border-box; 
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor; 
-  mask-composite: exclude; 
-}
-
-*/

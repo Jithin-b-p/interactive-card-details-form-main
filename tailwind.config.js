@@ -13,6 +13,7 @@ export default {
 
         customBlue: "hsl(var(--clr-blue))",
         customPurple: "hsl(var(--clr-purple))",
+        customErrorRed: "hsl(var(--clr-red))",
       },
     },
   },

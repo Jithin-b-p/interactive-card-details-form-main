@@ -1,9 +1,15 @@
 import { z } from "zod";
 
 export const cardDetailsFormSchema = z.object({
-  name: z.string(),
-  cardnumber: z.string(),
-  expmonth: z.string(),
-  expyear: z.string(),
-  cvc: z.string(),
+  name: z.string().min(1, { message: "Can't be blank" }),
+  cardnumber: z.string().refine(
+    (value) => {
+      if (value === "") return false;
+      return !value.match(/[A-Za-z]/g);
+    },
+    { message: "Wrong format, numbers only" }
+  ),
+  expmonth: z.string().min(1, { message: "Can't be blank" }),
+  expyear: z.string().min(1, { message: "Can't be blank" }),
+  cvc: z.string().min(1, { message: "Can't be blank" }),
 });
