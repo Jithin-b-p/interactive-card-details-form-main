@@ -12,9 +12,11 @@ type cardDetailsType = z.infer<typeof cardDetailsFormSchema>;
 function Form({
   formData,
   handleFormData,
+  handleOnSubmit,
 }: {
   formData: cardDetailsType;
   handleFormData: Dispatch<SetStateAction<cardDetailsType>>;
+  handleOnSubmit: () => void;
 }) {
   const {
     register,
@@ -28,6 +30,7 @@ function Form({
   const onSubmit: SubmitHandler<cardDetailsType> = (data) => {
     console.log(data);
     handleFormData(initalValue);
+    handleOnSubmit();
     reset();
   };
 
@@ -80,7 +83,7 @@ function Form({
 
   return (
     <form
-      className="flex flex-col gap-4 md:w-[50%]"
+      className="flex flex-col gap-4 lg:w-[55%]"
       onSubmit={handleSubmit(onSubmit)}
     >
       <Field id="name" label="CARDHOLDER NAME">
