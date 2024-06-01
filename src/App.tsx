@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Form from "./components/Form";
 import { initalValue } from "./constants/constants";
 import { motion } from "framer-motion";
+import Success from "./components/Success";
 
 const animateFrontVariant = {
   mobile: {
@@ -57,7 +58,7 @@ function App() {
   }, []);
 
   const onSubmitHandler = () => {
-    setIsSubmitted(true);
+    setIsSubmitted((value) => !value);
   };
   return (
     <section className="flex flex-col min-h-svh lg:flex-row">
@@ -128,11 +129,15 @@ function App() {
         </motion.div>
       </div>
       <div className="flex items-center justify-center max-lg:pt-[5.5rem] max-md:px-5 md:px-20 max-lg:pb-[3rem] lg:ps-44 lg:w-3/4 lg:pt-64 lg:pb-72">
-        <Form
-          formData={formData}
-          handleOnSubmit={onSubmitHandler}
-          handleFormData={setFormData}
-        />
+        {isSubmitted ? (
+          <Success handleContinue={onSubmitHandler} />
+        ) : (
+          <Form
+            formData={formData}
+            handleOnSubmit={onSubmitHandler}
+            handleFormData={setFormData}
+          />
+        )}
       </div>
     </section>
   );
