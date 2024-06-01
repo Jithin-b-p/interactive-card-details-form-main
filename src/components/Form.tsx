@@ -70,6 +70,14 @@ function Form({
     handleFormData({ ...formData, [name]: value });
   };
 
+  const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    if (value === "") handleFormData({ ...formData, [name]: "" });
+
+    handleFormData({ ...formData, [name]: value });
+  };
+
   return (
     <form
       className="flex flex-col gap-4 md:w-[50%]"
@@ -83,6 +91,7 @@ function Form({
             id="name"
             type="text"
             placeholder="e.g. Jane Appleseed"
+            onChange={onNameChange}
           />
         </span>
       </Field>
