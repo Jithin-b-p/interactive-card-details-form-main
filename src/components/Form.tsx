@@ -120,7 +120,7 @@ function Form({
                 onChange={onMonthChange}
               />
             </span>
-            <span className="w-1/2 px-[1.4px] py-[1.5px] input">
+            <span className="w-1/2 px-[1.3px] py-[1px] input">
               <input
                 className="w-full border-none border-[1px] text-lg px-4 py-2 placeholder:text-customNeutral-300 border-customNeutral-300 rounded-lg"
                 {...register("expyear")}
