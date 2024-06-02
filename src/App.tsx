@@ -121,7 +121,7 @@ function App() {
           </span>
           <img
             className="md:w-[23rem] xl:h-[15.3rem] xl:w-[27.8rem]"
-            src="/public/images/bg-card-back.png"
+            src="/images/bg-card-back.png"
             width={290}
             height={100}
             alt=""
