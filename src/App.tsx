@@ -84,7 +84,7 @@ function App() {
               alt=""
             />
           </div>
-          <span className="block text-center tracking-widest text-customNeutral-400 md:text-[1.2rem] xl:text-[1.8rem]">
+          <span className="block text-center tracking-widest text-[1.1rem] text-customNeutral-400 md:text-[1.2rem] xl:text-[1.8rem]">
             {formData.cardnumber ? formData.cardnumber : "0000 0000 0000 0000"}
           </span>
           <div className="flex justify-between md:mt-6">
