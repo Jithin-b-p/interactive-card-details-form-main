@@ -62,7 +62,7 @@ function App() {
   };
   return (
     <section className="flex flex-col min-h-svh lg:flex-row">
-      <div className="relative max-lg:h-[15rem] lg:basis-[38%] bg-[url('/images/bg-main-mobile.png')] lg:bg-[url('/images/bg-main-desktop.png')] bg-cover">
+      <div className="relative max-lg:h-[15rem] lg:basis-[38%] bg-[url('/images/bg-main-mobile.webp')] lg:bg-[url('/images/bg-main-desktop.webp')] bg-cover">
         <motion.div
           animate={`${
             screenWidth >= 1024
@@ -73,7 +73,7 @@ function App() {
           }`}
           variants={animateFrontVariant}
           transition={{ duration: 1 }}
-          className="px-5 py-4 text-lg absolute bg-[url('/images/bg-card-front.png')] z-10 w-[17rem] md:w-[22rem] md:h-[12rem] xl:w-[27.8rem] bg-cover h-[9.35rem] md:py-6 md:px-8 xl:h-[15.3rem] shadow-2xl"
+          className="px-5 py-4 text-lg absolute bg-[url('/images/bg-card-front.webp')] z-10 w-[17rem] md:w-[22rem] md:h-[12rem] xl:w-[27.8rem] bg-cover h-[9.35rem] md:py-6 md:px-8 xl:h-[15.3rem] shadow-2xl"
         >
           <div className="mb-10 xl:mb-[4.5rem]">
             <img
@@ -121,7 +121,7 @@ function App() {
           </span>
           <img
             className="md:w-[23rem] xl:h-[15.3rem] xl:w-[27.8rem]"
-            src="/images/bg-card-back.png"
+            src="/images/bg-card-back.webp"
             width={290}
             height={100}
             alt=""
