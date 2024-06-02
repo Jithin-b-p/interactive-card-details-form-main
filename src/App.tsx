@@ -120,7 +120,7 @@ function App() {
             {formData.cvc ? formData.cvc : "000"}
           </span>
           <img
-            className="md:w-[23rem] xl:h-[15.3rem] xl:w-[27.8rem]"
+            className="md:w-[23rem] aspect-auto xl:w-[27.8rem]"
             src="/images/bg-card-back.webp"
             width={290}
             height={100}
