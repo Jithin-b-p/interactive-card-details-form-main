@@ -6,7 +6,6 @@ import { z } from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Dispatch, SetStateAction } from "react";
-import { initalValue } from "../constants/constants";
 
 type cardDetailsType = z.infer<typeof cardDetailsFormSchema>;
 function Form({
@@ -27,9 +26,7 @@ function Form({
     resolver: zodResolver(cardDetailsFormSchema),
   });
 
-  const onSubmit: SubmitHandler<cardDetailsType> = (data) => {
-    console.log(data);
-    handleFormData(initalValue);
+  const onSubmit: SubmitHandler<cardDetailsType> = () => {
     handleOnSubmit();
     reset();
   };

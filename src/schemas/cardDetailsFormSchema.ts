@@ -5,6 +5,7 @@ export const cardDetailsFormSchema = z.object({
   cardnumber: z.string().refine(
     (value) => {
       if (value === "") return false;
+      if (value.length < 16) return false;
       return !value.match(/[A-Za-z]/g);
     },
     { message: "Wrong format, numbers only" }
