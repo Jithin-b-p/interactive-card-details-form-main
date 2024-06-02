@@ -28,13 +28,14 @@ Users should be able to:
 
 ### Screenshot
 
+![](./design/pagespeedinsight.png)
 ![](./design/desktop-design.jpg)
 ![](./design/mobile-design.jpg)
 
 ### Links
 
 - Solution URL: [Click here](https://your-solution-url.com)
-- Live Site URL: [Click here](https://your-live-site-url.com)
+- Live Site URL: [Click here](https://jithin-b-p-interactive-card-details.netlify.app/)
 
 ## My process
 
