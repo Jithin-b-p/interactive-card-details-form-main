@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import Form from "./components/Form";
 import { initalValue } from "./constants/constants";
-import Success from "./components/Success";
+
 import FrontCard from "./components/FrontCard";
 import BackCard from "./components/BackCard";
+
+const Success = lazy(() => import("./components/Success.tsx"));
 
 function App() {
   const [formData, setFormData] = useState(initalValue);
@@ -31,15 +33,17 @@ function App() {
         <BackCard screenWidth={screenWidth} formData={formData} />
       </div>
       <div className="flex items-center justify-center max-lg:pt-[5.5rem] max-md:px-5 md:px-20 max-lg:pb-[3rem] lg:ps-44 lg:w-3/4 lg:pt-64 lg:pb-72">
-        {isSubmitted ? (
-          <Success handleContinue={onSubmitHandler} />
-        ) : (
-          <Form
-            formData={formData}
-            handleOnSubmit={onSubmitHandler}
-            handleFormData={setFormData}
-          />
-        )}
+        <Suspense fallback={<h2>Loading</h2>}>
+          {isSubmitted ? (
+            <Success handleContinue={onSubmitHandler} />
+          ) : (
+            <Form
+              formData={formData}
+              handleOnSubmit={onSubmitHandler}
+              handleFormData={setFormData}
+            />
+          )}
+        </Suspense>
       </div>
     </section>
   );
