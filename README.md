@@ -34,7 +34,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Click here](https://your-solution-url.com)
+- Solution URL: [Click here](https://www.frontendmentor.io/solutions/interactive-card-details-formreact-ts-VVA-0iUO_Z)
 - Live Site URL: [Click here](https://jithin-b-p-interactive-card-details.netlify.app/)
 
 ## My process
