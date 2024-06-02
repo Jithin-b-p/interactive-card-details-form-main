@@ -7,7 +7,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Dispatch, SetStateAction } from "react";
 
-type cardDetailsType = z.infer<typeof cardDetailsFormSchema>;
+export type cardDetailsType = z.infer<typeof cardDetailsFormSchema>;
 function Form({
   formData,
   handleFormData,
